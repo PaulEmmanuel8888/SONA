@@ -1,22 +1,18 @@
+import SONALogo from "../../assets/images/SONA.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBarsStaggered, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <div>
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <img
-            src="../../assets/images/SONA_logo.png"
-            alt="SONA logo"
-            className="w-10 h-10"
-          />
-        </div>
-        <div className="flex items-center">
-          <ul className="flex items-center">
-            <li className="mr-4">
-              <a href="/">Home</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div className="flex flex-row justify-between w-full shadow items-center px-6 py-4">
+      <FontAwesomeIcon
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+        icon={isMenuOpen ? faXmark : faBarsStaggered}
+      />
+      <img src={SONALogo} alt="SONA Logo" className="h-10 w-auto mr-4" />
+      <span>Cart Icon</span>
     </div>
   );
 };
