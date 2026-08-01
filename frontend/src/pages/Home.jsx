@@ -1,7 +1,11 @@
+import Hero from "../components/product/Hero";
+import Container from "../components/layout/Container";
 const Home = () => {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Home</h1>
+      <Container>
+        <Hero />
+      </Container>
     </>
   );
 };
