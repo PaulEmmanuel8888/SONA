@@ -1,9 +1,19 @@
-const FloatingCard = ({ text, className }) => {
+const FloatingCard = ({ text, className = "" }) => {
   return (
     <div
-      className={`shadow-[0px_9px_6px_0px_rgba(0,0,0,0.25)] bg-[#C5C8CE] w-26 h-18 text-wrap rounded-xl text-center flex items-center justify-center ${className}`}
+      className={`
+        shadow-[0px_6px_3px_0px_rgba(0,0,0,0.25)]
+        bg-[#C5C8CE]
+        w-28 h-14
+        sm:w-30 sm:h-16
+        md:w-32 md:h-20
+        lg:w-36 lg:h-24
+        rounded-xl
+        flex items-center justify-center
+        ${className}
+      `}
     >
-      <p className="text-[#FFFFFF] text-wrap text-center text-xl font-bold">
+      <p className="text-xs text-white sm:text-sm md:text-base lg:text-lg font-bold px-2 text-center">
         {text}
       </p>
     </div>
