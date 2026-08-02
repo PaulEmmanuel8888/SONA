@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="overflow-x-hidden w-full flex flex-col mt-[10vh] md:mt-0  md:flex-row md:justify-between gap-[20vw] md:p-2 p-5 m-auto">
+    <section
+      id="hero"
+      className="overflow-x-hidden w-full flex flex-col mt-[10vh] md:mt-0  md:flex-row md:justify-between gap-[20vw] md:p-2 p-5 m-auto"
+    >
       <div className="relative mx-auto md:w-[34%] w-[80%] not-md:mt-[-12%]  flex flex-col items-center">
         <div className="relative">
           <HeroName
@@ -17,7 +20,7 @@ const Hero = () => {
           <img
             src={HeroImg}
             alt="SONA Hero Img"
-            className="w-full max-w-sm md:max-w-lg mx-auto block"
+            className="w-full max-w-sm md:max-w-lg mx-auto block cursor-pointer"
           />
 
           <div className="absolute top-8 left-0 w-full flex flex-wrap justify-center gap-2 md:flex-nowrap md:justify-between  z-[-1]">
@@ -41,9 +44,9 @@ const Hero = () => {
           <Link to={`/product`}>
             <Button text={`BUY`} />
           </Link>
-          <Link to={`/#features`}>
+          <a href="#features">
             <Button text={`EXPLORE`} backgroundColor="#C5C8CE" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>
