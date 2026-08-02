@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Card = ({ icon, title, desc }) => {
-  console.log(icon);
+const Card = ({ icon, title, desc, className = "" }) => {
   return (
-    <div className="flex flex-col items-center justify-between p-5 min-h-[40vh] w-[90%] m-auto border bg-black text-white rounded-2xl cursor-pointer hover:scale-110 transition-transform duration-200 ease-i">
+    <div
+      className={`flex flex-col items-center justify-between p-5 min-h-[40vh] md:min-h-0 md:h-full w-[90%] md:w-full m-auto md:m-0 border bg-black text-white rounded-2xl cursor-pointer hover:scale-110 transition-transform duration-200 ease-i ${className}`}
+    >
       <FontAwesomeIcon
         icon={icon}
         color="white"
