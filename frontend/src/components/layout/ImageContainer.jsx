@@ -1,11 +1,42 @@
-const ImageContainer = ({ image }) => {
+const ImageContainer = ({ image, animationKey }) => {
   return (
-    <div className="max-w-[80vw] h-[80vh] flex justify-center items-center m-[5vw]">
-      <img
-        className="rounded-full bg-[#f8f8f8] shadow-xl mt-[-20vh] md:w-[30vw] md:scale-110 object-contain h-[70vh] "
-        src={image}
-        alt="SONA ONE image"
-      />
+    <div className="relative w-[80vw] h-[80vw] md:w-[30vw] md:h-[30vw] m-[5vw] mx-auto">
+      {/* Circular image */}
+      <div className="absolute inset-0 rounded-full bg-[#f8f8f8] shadow-xl overflow-hidden">
+        <img
+          className="w-full h-full object-contain"
+          src={image}
+          alt="SONA ONE image"
+        />
+      </div>
+
+      {/* Progress ring */}
+      <svg
+        key={animationKey}
+        className="absolute inset-0 w-full h-full -rotate-90"
+        viewBox="0 0 100 100"
+      >
+        <circle
+          cx="50"
+          cy="50"
+          r="48"
+          fill="none"
+          stroke="#e5e5e5"
+          strokeWidth="1.5"
+        />
+
+        <circle
+          cx="50"
+          cy="50"
+          r="48"
+          fill="none"
+          stroke="#111111"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          pathLength="100"
+          className="animate-progress"
+        />
+      </svg>
     </div>
   );
 };

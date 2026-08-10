@@ -5,3 +5,18 @@ body {
 html {
   scroll-behavior: smooth;
 }
+@keyframes progress {
+  from {
+    stroke-dashoffset: 100;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-progress {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: progress 5s linear forwards;
+}

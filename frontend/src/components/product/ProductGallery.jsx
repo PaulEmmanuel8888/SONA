@@ -10,10 +10,13 @@ const images = [SONAImageTop, SONAImageLeft, SONAImageRight, SONAImageBottom];
 import ImageContainer from "../layout/ImageContainer";
 
 const ProductGallery = () => {
+  const [animationKey, setAnimationKey] = useState(0);
   const handleNext = () => {
     setCurrentIndex((prevIndex) => {
       return (prevIndex + 1) % images.length;
     });
+
+    setAnimationKey((prev) => prev + 1);
   };
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => {
@@ -35,9 +38,10 @@ const ProductGallery = () => {
       <p className="text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
         Explore every curve, detail, and feature of SONA ONE.
       </p>
-      <div>
-        <ImageContainer image={images[currentIndex]} />
-      </div>
+      <ImageContainer
+        image={images[currentIndex]}
+        animationKey={animationKey}
+      />
     </section>
   );
 };
