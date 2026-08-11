@@ -30,12 +30,12 @@ const ProductGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       handleNext();
     }, 5000);
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [animationKey]);
   return (
     <section id="gallery">
       <SectionHeader text={`See SONA ONE From Every Angle`} />
