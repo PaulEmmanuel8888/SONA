@@ -1,7 +1,7 @@
 const ImageContainer = ({ image, animationKey }) => {
   return (
     <div className="relative w-[80vw] h-[80vw] md:w-[30vw] md:h-[30vw] m-[5vw] mx-auto">
-      {/* Circular image */}
+      
       <div className="absolute inset-0 rounded-full bg-[#f8f8f8] shadow-xl overflow-hidden">
         <img
           className="w-full h-full object-contain"
@@ -10,7 +10,7 @@ const ImageContainer = ({ image, animationKey }) => {
         />
       </div>
 
-      {/* Progress ring */}
+      
       <svg
         key={animationKey}
         className="absolute inset-0 w-full h-full -rotate-90"
