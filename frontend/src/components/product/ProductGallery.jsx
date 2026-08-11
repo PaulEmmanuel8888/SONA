@@ -49,16 +49,16 @@ const ProductGallery = () => {
         />
 
         <div className="flex justify-center gap-6 mt-6 md:hidden">
-          <CarouselButton direction="prev" />
-          <CarouselButton direction="next" />
+          <CarouselButton direction="prev" control={handlePrev} />
+          <CarouselButton direction="next" control={handleNext} />
         </div>
 
         <div className="hidden md:flex absolute inset-y-0 left-40 items-center">
-          <CarouselButton direction="prev" />
+          <CarouselButton direction="prev" control={handlePrev} />
         </div>
 
         <div className="hidden md:flex absolute inset-y-0 right-40 items-center">
-          <CarouselButton direction="next" />
+          <CarouselButton direction="next" control={handleNext} />
         </div>
       </div>
     </section>

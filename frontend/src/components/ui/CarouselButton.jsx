@@ -1,11 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-const CarouselButton = ({ direction }) => {
+const CarouselButton = ({ direction, control }) => {
   const icon = direction === "prev" ? faArrowLeft : faArrowRight;
 
   return (
     <button
+      onClick={() => {
+        control();
+      }}
       className="
         w-14 h-14
         md:w-16 md:h-16
