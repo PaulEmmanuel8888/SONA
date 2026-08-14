@@ -56,34 +56,50 @@ const ProductSpecs = () => {
         A closer look at the technical details and performance behind SONA ONE.
       </p>
 
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl mb-[15vh]">
         {specifications.map((category, index) => (
           <div key={category.title} className="border-b border-black/20">
             <button
               onClick={() => handleAccordion(index)}
-              className="w-full flex items-center justify-between py-6 text-left"
+              className="w-full flex items-center justify-between py-6 text-left cursor-pointer"
             >
               <span className="text-xl font-medium">{category.title}</span>
 
-              <span className="text-2xl">
-                {openIndex === index ? "−" : "+"}
+              <span
+                className={`
+                  text-2xl
+                  transition-transform duration-300
+                  ${openIndex === index ? "rotate-45" : "rotate-0"}
+                `}
+              >
+                +
               </span>
             </button>
 
-            {openIndex === index && (
-              <div className="pb-6">
-                {category.specs.map(([label, value]) => (
-                  <div
-                    key={label}
-                    className="flex justify-between gap-6 py-3 text-gray-600"
-                  >
-                    <span>{label}</span>
+            <div
+              className={`
+                grid
+                transition-[grid-template-rows]
+                duration-500
+                ease-in-out
+                ${openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}
+              `}
+            >
+              <div className="overflow-hidden">
+                <div className="pb-6">
+                  {category.specs.map(([label, value]) => (
+                    <div
+                      key={label}
+                      className="flex justify-between gap-6 py-3 text-gray-600"
+                    >
+                      <span>{label}</span>
 
-                    <span className="text-right text-black">{value}</span>
-                  </div>
-                ))}
+                      <span className="text-right text-black">{value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>
