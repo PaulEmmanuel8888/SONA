@@ -14,7 +14,6 @@ const CTA = () => {
           $79.99
         </p>
         <p className="price font-bold md:text-4xl text-3xl">$59.99</p>
-
         <Button text={`Get Yours`} />
       </div>
     </section>
