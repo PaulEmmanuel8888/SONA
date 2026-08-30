@@ -4,6 +4,8 @@ import Features from "../components/product/Features";
 import ProductGallery from "../components/product/ProductGallery";
 import ProductSpecs from "../components/product/ProductSpecs";
 import Reviews from "../components/product/Reviews";
+import FAQ from "../components/product/FAQ";
+import CTA from "../components/product/CTA";
 
 const Home = () => {
   return (
@@ -22,6 +24,12 @@ const Home = () => {
       </Container>
       <Container>
         <Reviews />
+      </Container>
+      <Container>
+        <FAQ />
+      </Container>
+      <Container>
+        <CTA />
       </Container>
     </>
   );
