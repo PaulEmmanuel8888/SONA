@@ -4,7 +4,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const BackButton = () => {
   return (
-    <div className="mt-[5vh]">
+    <div className="mt-[5vh] text-xl md:text-2xl font-bold">
       <Link to="/">
         <FontAwesomeIcon icon={faArrowLeft} /> {"  "} <span>BACK</span>
       </Link>
