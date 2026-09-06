@@ -10,7 +10,7 @@ import SONAHeadsetWhite from "../assets/images/SONA_headset_white.png";
 import SONAHeadsetSilver from "../assets/images/SONA_headset_silver.png";
 import SONAHeadsetPink from "../assets/images/SONA_headset_pink.png";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const colors = [
   {
@@ -36,7 +36,16 @@ const colors = [
 ];
 
 const Product = () => {
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedColor, setSelectedColor] = useState(() => {
+    const savedColor = localStorage.getItem("sona-selected-color");
+
+    return colors.find((color) => color.name === savedColor) || colors[0];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("sona-selected-color", selectedColor.name);
+  }, [selectedColor]);
+
   return (
     <>
       <Container>
