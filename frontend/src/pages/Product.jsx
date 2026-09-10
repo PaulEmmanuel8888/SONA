@@ -5,10 +5,16 @@ import Container from "../components/layout/Container";
 import ProductImage from "../components/product/ProductImage";
 
 import ColorSelector from "../components/product/ColorSelector";
+
 import SONAHeadsetBlack from "../assets/images/SONA_headset_black.png";
+
 import SONAHeadsetWhite from "../assets/images/SONA_headset_white.png";
+
 import SONAHeadsetSilver from "../assets/images/SONA_headset_silver.png";
+
 import SONAHeadsetPink from "../assets/images/SONA_headset_pink.png";
+
+import QuantitySelector from "../components/product/QuantitySelector";
 
 import { useState, useEffect } from "react";
 
@@ -38,6 +44,7 @@ const colors = [
 const Product = () => {
   const [selectedColor, setSelectedColor] = useState(() => {
     const savedColor = localStorage.getItem("sona-selected-color");
+
     return colors.find((color) => color.name === savedColor) || colors[0];
   });
 
@@ -55,11 +62,15 @@ const Product = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-center">
           <ProductImage color={selectedColor} />
 
-          <ColorSelector
-            colors={colors}
-            selectedColor={selectedColor}
-            setSelectedColor={setSelectedColor}
-          />
+          <div className="flex flex-col items-center lg:items-start gap-10">
+            <ColorSelector
+              colors={colors}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+            />
+
+            <QuantitySelector />
+          </div>
         </div>
       </Container>
     </>
