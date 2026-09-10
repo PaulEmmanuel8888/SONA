@@ -15,6 +15,7 @@ import SONAHeadsetSilver from "../assets/images/SONA_headset_silver.png";
 import SONAHeadsetPink from "../assets/images/SONA_headset_pink.png";
 
 import QuantitySelector from "../components/product/QuantitySelector";
+import Button from "../components/ui/Button";
 
 import { useState, useEffect } from "react";
 
@@ -70,6 +71,8 @@ const Product = () => {
             />
 
             <QuantitySelector />
+
+            <Button text="Add to Cart" />
           </div>
         </div>
       </Container>
