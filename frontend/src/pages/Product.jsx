@@ -38,7 +38,6 @@ const colors = [
 const Product = () => {
   const [selectedColor, setSelectedColor] = useState(() => {
     const savedColor = localStorage.getItem("sona-selected-color");
-
     return colors.find((color) => color.name === savedColor) || colors[0];
   });
 
