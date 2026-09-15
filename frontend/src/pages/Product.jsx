@@ -16,6 +16,7 @@ import SONAHeadsetPink from "../assets/images/SONA_headset_pink.png";
 
 import QuantitySelector from "../components/product/QuantitySelector";
 import Button from "../components/ui/Button";
+import Benefits from "../components/product/Benefits";
 
 import { useState, useEffect } from "react";
 
@@ -75,6 +76,10 @@ const Product = () => {
             <Button text="Add to Cart" />
           </div>
         </div>
+      </Container>
+
+      <Container>
+        <Benefits />
       </Container>
     </>
   );
