@@ -44,6 +44,7 @@ const colors = [
 ];
 
 const Product = () => {
+  const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState(() => {
     const savedColor = localStorage.getItem("sona-selected-color");
 
@@ -71,7 +72,7 @@ const Product = () => {
               setSelectedColor={setSelectedColor}
             />
 
-            <QuantitySelector />
+            <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
 
             <Button text="Add to Cart" />
           </div>

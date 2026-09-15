@@ -1,8 +1,4 @@
-import { useState } from "react";
-
-const QuantitySelector = () => {
-  const [quantity, setQuantity] = useState(1);
-
+const QuantitySelector = ({ quantity, setQuantity }) => {
   const decreaseQuantity = () => {
     setQuantity((prev) => Math.max(prev - 1, 1));
   };
