@@ -19,6 +19,7 @@ import Button from "../components/ui/Button";
 import Benefits from "../components/product/Benefits";
 
 import { useState, useEffect } from "react";
+import { useCart } from "../context/cartContext";
 
 const colors = [
   {
@@ -51,6 +52,8 @@ const Product = () => {
     return colors.find((color) => color.name === savedColor) || colors[0];
   });
 
+  const { addToCart } = useCart();
+
   useEffect(() => {
     localStorage.setItem("sona-selected-color", selectedColor.name);
   }, [selectedColor]);
@@ -74,7 +77,10 @@ const Product = () => {
 
             <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
 
-            <Button text="Add to Cart" />
+            <Button
+              text="Add to Cart"
+              onClick={() => addToCart(selectedColor, quantity)}
+            />
           </div>
         </div>
       </Container>
