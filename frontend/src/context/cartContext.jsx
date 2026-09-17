@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
@@ -20,12 +20,21 @@ export const CartProvider = ({ children }) => {
       return [...currentItems, { color, quantity }];
     });
   };
-  useEffect(() => {
-    console.log("Current Cart:", cartItems);
-  }, [cartItems]);
+
+  const updateQuantity = (colorName, newQuantity) => {
+    setCartItems((currentItems) =>
+      currentItems.map((item) =>
+        item.color.name === colorName
+          ? { ...item, quantity: newQuantity }
+          : item,
+      ),
+    );
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems, addToCart }}>
+    <CartContext.Provider
+      value={{ cartItems, setCartItems, addToCart, updateQuantity }}
+    >
       {children}
     </CartContext.Provider>
   );

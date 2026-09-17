@@ -1,4 +1,16 @@
+import { useCart } from "../../context/cartContext.jsx";
+
 const CartItem = ({ item }) => {
+  const { updateQuantity } = useCart();
+
+  const decreaseQuantity = () => {
+    updateQuantity(item.color.name, Math.max(item.quantity - 1, 1));
+  };
+
+  const increaseQuantity = () => {
+    updateQuantity(item.color.name, item.quantity + 1);
+  };
+
   return (
     <div className="flex items-center gap-6 border border-gray-200 rounded-xl p-5">
       <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden shrink-0">
@@ -14,7 +26,23 @@ const CartItem = ({ item }) => {
 
         <p className="text-gray-500">{item.color.name}</p>
 
-        <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
+        <div className="flex items-center w-fit border border-gray-300 rounded-full overflow-hidden">
+          <button
+            onClick={decreaseQuantity}
+            className="w-10 h-10 flex items-center justify-center text-xl cursor-pointer hover:bg-gray-100 transition"
+          >
+            −
+          </button>
+
+          <span className="w-10 text-center font-medium">{item.quantity}</span>
+
+          <button
+            onClick={increaseQuantity}
+            className="w-10 h-10 flex items-center justify-center text-xl cursor-pointer hover:bg-gray-100 transition"
+          >
+            +
+          </button>
+        </div>
       </div>
     </div>
   );
