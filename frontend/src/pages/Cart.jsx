@@ -1,4 +1,5 @@
 import Container from "../components/layout/Container";
+import CartItem from "../components/cart/CartItem.jsx";
 import { useCart } from "../context/cartContext.jsx";
 
 const Cart = () => {
@@ -6,16 +7,14 @@ const Cart = () => {
 
   return (
     <section id="cart">
-      <Container className="mt-[10vh]">
-        <h1 className="text-4xl font-bold">Your Cart</h1>
+      <Container className="mt-[15vh]">
+        <h1 className="text-4xl mt-[5vh] font-bold">Your Cart</h1>
 
-        <div className="mt-10">
+        <div className="flex flex-col gap-6 mt-10">
+          {" "}
           {cartItems.map((item) => (
-            <div key={item.color.name}>
-              <p>{item.color.name}</p>
-              <p>Quantity: {item.quantity}</p>
-            </div>
-          ))}
+            <CartItem key={item.color.name} item={item} />
+          ))}{" "}
         </div>
       </Container>
     </section>
