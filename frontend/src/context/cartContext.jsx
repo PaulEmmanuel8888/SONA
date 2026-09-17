@@ -31,9 +31,21 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const removeFromCart = (colorName) => {
+    setCartItems((currentItems) =>
+      currentItems.filter((item) => item.color.name !== colorName),
+    );
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, setCartItems, addToCart, updateQuantity }}
+      value={{
+        cartItems,
+        setCartItems,
+        addToCart,
+        updateQuantity,
+        removeFromCart,
+      }}
     >
       {children}
     </CartContext.Provider>
