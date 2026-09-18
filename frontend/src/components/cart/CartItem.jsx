@@ -51,7 +51,7 @@ const CartItem = ({ item }) => {
 
           <button
             onClick={() => removeFromCart(item.color.name)}
-            className="text-sm text-gray-500 underline cursor-pointer hover:text-black transition"
+            className="w-fit px-3 py-1.5 text-sm text-gray-500 border border-gray-300 rounded-md cursor-pointer hover:text-red-600 hover:border-red-600 hover:bg-red-50 transition"
           >
             Remove
           </button>
