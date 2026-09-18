@@ -1,23 +1,14 @@
 import BackButton from "../components/ui/BackButton";
-
 import Container from "../components/layout/Container";
-
 import ProductImage from "../components/product/ProductImage";
-
 import ColorSelector from "../components/product/ColorSelector";
-
 import SONAHeadsetBlack from "../assets/images/SONA_headset_black.png";
-
 import SONAHeadsetWhite from "../assets/images/SONA_headset_white.png";
-
 import SONAHeadsetSilver from "../assets/images/SONA_headset_silver.png";
-
 import SONAHeadsetPink from "../assets/images/SONA_headset_pink.png";
-
 import QuantitySelector from "../components/product/QuantitySelector";
 import Button from "../components/ui/Button";
 import Benefits from "../components/product/Benefits";
-
 import { useState, useEffect } from "react";
 import { useCart } from "../context/cartContext";
 
@@ -46,9 +37,10 @@ const colors = [
 
 const Product = () => {
   const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
+
   const [selectedColor, setSelectedColor] = useState(() => {
     const savedColor = localStorage.getItem("sona-selected-color");
-
     return colors.find((color) => color.name === savedColor) || colors[0];
   });
 
@@ -57,6 +49,17 @@ const Product = () => {
   useEffect(() => {
     localStorage.setItem("sona-selected-color", selectedColor.name);
   }, [selectedColor]);
+
+  const handleAddToCart = () => {
+    if (added) return;
+
+    addToCart(selectedColor, quantity);
+    setAdded(true);
+
+    setTimeout(() => {
+      setAdded(false);
+    }, 2000);
+  };
 
   return (
     <>
@@ -77,10 +80,20 @@ const Product = () => {
 
             <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
 
-            <Button
-              text="Add to Cart"
-              onClick={() => addToCart(selectedColor, quantity)}
-            />
+            <div className="flex flex-col items-center lg:items-start gap-3">
+              <Button
+                text={added ? "Added to Cart" : "Add to Cart"}
+                onClick={handleAddToCart}
+                disabled={added}
+              />
+
+              {added && (
+                <p className="text-sm text-gray-500">
+                  {quantity} {quantity === 1 ? "item" : "items"} added to your
+                  cart.
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </Container>
