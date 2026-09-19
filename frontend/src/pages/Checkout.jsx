@@ -1,6 +1,26 @@
 import Container from "../components/layout/Container";
+import { useState } from "react";
 
 const Checkout = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    country: "",
+    phone: "",
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
   return (
     <section id="checkout">
       <Container className="mt-[10vh]">
@@ -19,6 +39,9 @@ const Checkout = () => {
                 </label>
 
                 <input
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   id="email"
                   type="email"
                   placeholder="you@example.com"
@@ -37,6 +60,9 @@ const Checkout = () => {
                   </label>
 
                   <input
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
                     id="firstName"
                     type="text"
                     placeholder="Emmanuel"
@@ -50,6 +76,9 @@ const Checkout = () => {
                   </label>
 
                   <input
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
                     id="lastName"
                     type="text"
                     placeholder="Paul"
@@ -64,6 +93,9 @@ const Checkout = () => {
                 </label>
 
                 <input
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
                   id="address"
                   type="text"
                   placeholder="123 Main Street"
@@ -78,6 +110,9 @@ const Checkout = () => {
                   </label>
 
                   <input
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
                     id="city"
                     type="text"
                     placeholder="City"
@@ -91,6 +126,9 @@ const Checkout = () => {
                   </label>
 
                   <input
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
                     id="state"
                     type="text"
                     placeholder="Lagos"
@@ -106,6 +144,9 @@ const Checkout = () => {
                   </label>
 
                   <input
+                    name="postalCode"
+                    value={formData.postalCode}
+                    onChange={handleChange}
                     id="postalCode"
                     type="text"
                     placeholder="800001"
@@ -119,6 +160,9 @@ const Checkout = () => {
                   </label>
 
                   <input
+                    name="country"
+                    value={formData.country}
+                    onChange={handleChange}
                     id="country"
                     type="text"
                     placeholder="Nigeria"
@@ -133,6 +177,9 @@ const Checkout = () => {
                 </label>
 
                 <input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   id="phone"
                   type="tel"
                   placeholder="+234 800 000 0000"
