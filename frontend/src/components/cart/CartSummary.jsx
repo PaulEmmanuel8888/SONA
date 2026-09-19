@@ -1,4 +1,6 @@
 import { useCart } from "../../context/cartContext.jsx";
+import Button from "../ui/Button";
+import { Link } from "react-router-dom";
 
 const CartSummary = () => {
   const { cartItems } = useCart();
@@ -29,6 +31,12 @@ const CartSummary = () => {
           <p className="text-lg font-semibold">Total</p>
           <p className="text-xl font-semibold">${subtotal.toFixed(2)}</p>
         </div>
+        <Link
+          to="/checkout"
+          className="font-bold cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out flex items-center justify-center rounded-md px-8 py-4 w-full h-12 bg-black text-white"
+        >
+          Checkout
+        </Link>
       </div>
     </div>
   );
