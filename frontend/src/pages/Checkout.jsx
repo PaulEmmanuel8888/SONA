@@ -1,6 +1,6 @@
 import Container from "../components/layout/Container";
 import { useState } from "react";
-
+import { useCart } from "../context/cartContext.jsx";
 const Checkout = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -13,6 +13,7 @@ const Checkout = () => {
     country: "",
     phone: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -21,6 +22,14 @@ const Checkout = () => {
       [name]: value,
     }));
   };
+  const { cartItems } = useCart();
+
+  const price = 59.99;
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.quantity * price,
+    0,
+  );
   return (
     <section id="checkout">
       <Container className="mt-[10vh]">
@@ -191,6 +200,56 @@ const Checkout = () => {
 
           <div className="border border-gray-200 rounded-xl p-6">
             <h2 className="text-2xl font-semibold">Order Summary</h2>
+
+            <div className="flex flex-col gap-6 mt-6">
+              {cartItems.map((item) => (
+                <div
+                  key={item.color.name}
+                  className="flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden shrink-0">
+                      <img
+                        src={item.color.image}
+                        alt={`SONA ONE headphones in ${item.color.name} color`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+
+                    <div>
+                      <h3 className="font-medium">SONA ONE</h3>
+                      <p className="text-sm text-gray-500">{item.color.name}</p>
+                      <p className="text-sm text-gray-500">
+                        Qty: {item.quantity}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="font-medium">
+                    ${(price * item.quantity).toFixed(2)}
+                  </p>
+                </div>
+              ))}
+
+              <div className="border-t border-gray-200 pt-5 flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-gray-500">Subtotal</p>
+                  <p className="font-medium">${subtotal.toFixed(2)}</p>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <p className="text-gray-500">Shipping</p>
+                  <p className="font-medium">Free</p>
+                </div>
+
+                <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+                  <p className="text-lg font-semibold">Total</p>
+                  <p className="text-xl font-semibold">
+                    ${subtotal.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Container>
