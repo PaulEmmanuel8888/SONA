@@ -14,6 +14,52 @@ const Checkout = () => {
     phone: "",
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email address is required";
+    }
+
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+
+    if (!formData.address.trim()) {
+      newErrors.address = "Address is required";
+    }
+
+    if (!formData.city.trim()) {
+      newErrors.city = "City is required";
+    }
+
+    if (!formData.state.trim()) {
+      newErrors.state = "State is required";
+    }
+
+    if (!formData.postalCode.trim()) {
+      newErrors.postalCode = "Postal code is required";
+    }
+
+    if (!formData.country.trim()) {
+      newErrors.country = "Country is required";
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -56,6 +102,9 @@ const Checkout = () => {
                   placeholder="you@example.com"
                   className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                 />
+                {errors.email && (
+                  <p className="text-sm text-red-600 mt-1">{errors.email}</p>
+                )}
               </div>
             </div>
 
@@ -77,6 +126,11 @@ const Checkout = () => {
                     placeholder="Emmanuel"
                     className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                   />
+                  {errors.firstName && (
+                    <p className="text-sm text-red-600 mt-1">
+                      {errors.firstName}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -93,6 +147,11 @@ const Checkout = () => {
                     placeholder="Paul"
                     className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                   />
+                  {errors.lastName && (
+                    <p className="text-sm text-red-600 mt-1">
+                      {errors.lastName}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -110,6 +169,9 @@ const Checkout = () => {
                   placeholder="123 Main Street"
                   className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                 />
+                {errors.address && (
+                  <p className="text-sm text-red-600 mt-1">{errors.address}</p>
+                )}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
@@ -127,6 +189,9 @@ const Checkout = () => {
                     placeholder="City"
                     className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                   />
+                  {errors.city && (
+                    <p className="text-sm text-red-600 mt-1">{errors.city}</p>
+                  )}
                 </div>
 
                 <div>
@@ -143,6 +208,9 @@ const Checkout = () => {
                     placeholder="Lagos"
                     className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                   />
+                  {errors.state && (
+                    <p className="text-sm text-red-600 mt-1">{errors.state}</p>
+                  )}
                 </div>
               </div>
 
@@ -161,6 +229,11 @@ const Checkout = () => {
                     placeholder="800001"
                     className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                   />
+                  {errors.postalCode && (
+                    <p className="text-sm text-red-600 mt-1">
+                      {errors.postalCode}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -177,6 +250,11 @@ const Checkout = () => {
                     placeholder="Nigeria"
                     className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                   />
+                  {errors.country && (
+                    <p className="text-sm text-red-600 mt-1">
+                      {errors.country}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -194,8 +272,18 @@ const Checkout = () => {
                   placeholder="+234 800 000 0000"
                   className="w-full mt-2 border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-black transition"
                 />
+                {errors.phone && (
+                  <p className="text-sm text-red-600 mt-1">{errors.phone}</p>
+                )}
               </div>
             </div>
+            <button
+              type="button"
+              onClick={validateForm}
+              className="mt-8 w-full bg-black text-white py-3 rounded-md font-bold hover:scale-[1.02] transition-transform cursor-pointer"
+            >
+              Continue to Payment
+            </button>
           </div>
 
           <div className="border border-gray-200 rounded-xl p-6">
