@@ -1,6 +1,8 @@
 import Container from "../components/layout/Container";
 import { useEffect, useState } from "react";
 import { useCart } from "../context/cartContext.jsx";
+import { Navigate } from "react-router-dom";
+
 const Checkout = () => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
@@ -128,12 +130,6 @@ const Checkout = () => {
   };
   const { cartItems, setCartItems } = useCart();
 
-  const price = 59.99;
-
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item.quantity * price,
-    0,
-  );
   if (orderPlaced) {
     return (
       <section id="checkout">
@@ -154,6 +150,17 @@ const Checkout = () => {
       </section>
     );
   }
+  if (cartItems.length === 0) {
+    return <Navigate to="/cart" replace />;
+  }
+
+  const price = 59.99;
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.quantity * price,
+    0,
+  );
+
   return (
     <section id="checkout">
       <Container className="mt-[10vh]">
