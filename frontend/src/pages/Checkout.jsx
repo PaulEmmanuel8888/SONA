@@ -1,7 +1,8 @@
 import Container from "../components/layout/Container";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCart } from "../context/cartContext.jsx";
 const Checkout = () => {
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
 
   const [paymentData, setPaymentData] = useState({
@@ -22,6 +23,14 @@ const Checkout = () => {
     country: "",
     phone: "",
   });
+  useEffect(() => {
+    if (orderPlaced) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [orderPlaced]);
 
   const handlePaymentChange = (event) => {
     const { name, value } = event.target;
@@ -99,7 +108,14 @@ const Checkout = () => {
 
     setPaymentErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
+    const isValid = Object.keys(newErrors).length === 0;
+
+    if (isValid) {
+      setCartItems([]);
+      setOrderPlaced(true);
+    }
+
+    return isValid;
   };
 
   const handleChange = (event) => {
@@ -110,7 +126,7 @@ const Checkout = () => {
       [name]: value,
     }));
   };
-  const { cartItems } = useCart();
+  const { cartItems, setCartItems } = useCart();
 
   const price = 59.99;
 
@@ -118,6 +134,26 @@ const Checkout = () => {
     (total, item) => total + item.quantity * price,
     0,
   );
+  if (orderPlaced) {
+    return (
+      <section id="checkout">
+        <Container className="mt-[20vh]">
+          <div className="max-w-xl mx-auto text-center mt-[5vh] border border-gray-200 rounded-xl p-10">
+            <h1 className="text-4xl font-bold">Order Confirmed</h1>
+
+            <p className="text-gray-500 mt-4">
+              Thank you for your purchase. Your SONA ONE order has been placed
+              successfully.
+            </p>
+
+            <p className="text-sm text-gray-400 mt-3">
+              This is a demo order. No real payment was processed.
+            </p>
+          </div>
+        </Container>
+      </section>
+    );
+  }
   return (
     <section id="checkout">
       <Container className="mt-[10vh]">
