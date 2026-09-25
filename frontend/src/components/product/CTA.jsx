@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SectionHeader from "../layout/SectionHeader";
 import Button from "../ui/Button";
 
@@ -9,12 +10,14 @@ const CTA = () => {
         Limited launch price!!!
       </p>
 
-      <div className="text-center">
+      <div className="flex flex-col items-center">
         <p className="price old-price line-through text-xl -rotate-15 mt-[5%]">
           $79.99
         </p>
-        <p className="price font-bold md:text-4xl text-3xl">$59.99</p>
-        <Button text={`Get Yours`} />
+        <p className="price mb-5 font-bold md:text-4xl text-3xl">$59.99</p>
+        <Link to={`/product`}>
+          <Button text={`Get Yours`} />
+        </Link>
       </div>
     </section>
   );
