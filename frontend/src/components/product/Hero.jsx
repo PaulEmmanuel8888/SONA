@@ -3,24 +3,58 @@ import FloatingCard from "./FloatingCard";
 import HeroName from "./HeroName";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Hero = () => {
+  useGSAP(() => {
+    gsap.from(".hero-image", {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+    });
+
+    gsap.from(".floating-card", {
+      scale: 0,
+      opacity: 0,
+      stagger: 0.2,
+      delay: 0.5,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+    });
+
+    gsap.from(".hero-text", {
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      delay: 0.3,
+    });
+
+    gsap.from(".hero-cta-btn", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.8,
+    });
+  });
+
   return (
     <section
       id="hero"
-      className="overflow-x-hidden w-full flex flex-col mt-[10vh] md:mt-0  md:flex-row md:justify-between gap-[20vw] md:p-2 p-5 m-auto"
+      className="overflow-x-hidden overflow-y-hidden w-full flex flex-col mt-[10vh] md:mt-0  md:flex-row md:justify-between gap-[20vw] md:p-2 p-5 m-auto"
     >
       <div className="relative mx-auto md:w-[34%] w-[80%] not-md:mt-[-12%]  flex flex-col items-center">
         <div className="relative">
           <HeroName
             text="SONA ONE"
-            className="absolute top-60 left-1/2 -translate-x-1/2 text-2.8xl md:text-4xl md:top-55"
+            className="hero-text absolute top-60 left-1/2 -translate-x-1/2 text-2.8xl md:text-4xl md:top-55"
           />
 
           <img
             src={HeroImg}
             alt="SONA Hero Img"
-            className="w-full max-w-sm md:max-w-lg mx-auto block cursor-pointer"
+            className="hero-image w-full max-w-sm md:max-w-lg mx-auto block cursor-pointer"
           />
 
           <div className="absolute top-8 left-0 w-full flex flex-wrap justify-center gap-2 md:flex-nowrap md:justify-between  z-[-1]">

@@ -10,6 +10,7 @@ const FloatingCard = ({ text, className = "" }) => {
         lg:w-36 lg:h-24
         rounded-xl
         flex items-center justify-center
+        floating-card
         ${className}
       `}
     >
