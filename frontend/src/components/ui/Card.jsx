@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Card = ({ icon, title, desc, className = "" }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-between p-5 min-h-[40vh] md:min-h-0 md:h-full w-[90%] md:w-full m-auto md:m-0 border bg-black text-white rounded-2xl cursor-pointer hover:scale-110 transition-transform duration-200 ease-i ${className}`}
+      className={`flex flex-col items-center justify-between p-5 min-h-[40vh] md:min-h-0 md:h-full w-[90%] md:w-full m-auto md:m-0 border bg-black text-white rounded-2xl cursor-pointer hover:-translate-y-1 transition-transform duration-300 ease-out ${className}`}
     >
       <FontAwesomeIcon
         icon={icon}
