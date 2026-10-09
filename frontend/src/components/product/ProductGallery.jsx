@@ -14,7 +14,9 @@ import ImageContainer from "../layout/ImageContainer";
 
 const ProductGallery = () => {
   const [animationKey, setAnimationKey] = useState(0);
+  const [direction, setDirection] = useState(1);
   const handleNext = () => {
+    setDirection(1);
     setCurrentIndex((prevIndex) => {
       return (prevIndex + 1) % images.length;
     });
@@ -22,6 +24,8 @@ const ProductGallery = () => {
     setAnimationKey((prev) => prev + 1);
   };
   const handlePrev = () => {
+    setDirection(-1);
+
     setCurrentIndex((prevIndex) => {
       return (prevIndex - 1 + images.length) % images.length;
     });
@@ -46,6 +50,7 @@ const ProductGallery = () => {
         <ImageContainer
           image={images[currentIndex]}
           animationKey={animationKey}
+          direction={direction}
         />
 
         <div className="flex justify-center gap-6 mt-6 md:hidden">

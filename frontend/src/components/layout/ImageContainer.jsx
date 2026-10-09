@@ -2,7 +2,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const ImageContainer = ({ image, animationKey }) => {
+const ImageContainer = ({ image, animationKey, direction }) => {
   const imageRef = useRef(null);
 
   useGSAP(
@@ -10,7 +10,7 @@ const ImageContainer = ({ image, animationKey }) => {
       gsap.fromTo(
         imageRef.current,
         {
-          x: 35,
+          x: direction * 35,
           autoAlpha: 0,
           scale: 0.97,
         },
