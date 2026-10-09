@@ -11,7 +11,7 @@ const Features = () => {
   return (
     <section id="features">
       <SectionHeader text={`Everything You Need For Better Listening`} />
-      <p className="text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
+      <p className="section-description text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
         Crafted for listeners who demand clarity, comfort, and performance.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-4 md:gap-6 w-[90%] md:w-[75%] max-w-4xl mx-auto">

@@ -40,7 +40,7 @@ const FAQ = () => {
     <section id="faqs">
       <SectionHeader text="Questions? We've Got Answers." />
 
-      <p className="text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
+      <p className="section-description text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
         Everything you need to know about SONA ONE.
       </p>
 

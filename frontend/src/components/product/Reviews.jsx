@@ -26,7 +26,7 @@ const Reviews = () => {
     <section id="reviews">
       <SectionHeader text="Loved By Listeners" />
 
-      <p className="text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
+      <p className="section-description text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
         Real impressions from listeners who made SONA ONE their own.
       </p>
 

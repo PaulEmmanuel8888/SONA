@@ -39,7 +39,7 @@ const ProductGallery = () => {
   return (
     <section id="gallery">
       <SectionHeader text={`See SONA ONE From Every Angle`} />
-      <p className="text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
+      <p className="section-description text-center md:m-[10vh] mb-[5vh] mt-[5vh] text-xl md:text-2xl">
         Explore every curve, detail, and feature of SONA ONE.
       </p>
       <div className="relative">
