@@ -48,7 +48,7 @@ const Hero = () => {
         <div className="relative">
           <HeroName
             text="SONA ONE"
-            className="hero-text absolute top-60 left-1/2 -translate-x-1/2 text-2.8xl md:text-4xl md:top-55"
+            className="hero-text absolute top-60 left-1/2 -translate-x-1/2 text-2.8xl md:text-4xl md:top-55 z-10"
           />
 
           <img
