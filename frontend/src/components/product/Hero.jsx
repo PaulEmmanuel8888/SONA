@@ -74,7 +74,7 @@ const Hero = () => {
           </p>
           <p className="price text-3xl">$59.99</p>
         </div>
-        <div className="hero-cta-btn mt-[10%] flex flex-col gap-2 md:gap-6  md:flex-row">
+        <div className="hero-cta-btn mt-[10%] flex flex-col items-center gap-2 md:gap-6 md:flex-row">
           <Link to={`/product`}>
             <Button text={`BUY`} />
           </Link>
